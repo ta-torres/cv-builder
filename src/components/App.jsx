@@ -3,6 +3,9 @@ import Section from "./Section";
 import GeneralForm from "./GeneralForm";
 import EducationForm from "./EducationForm";
 import ExperienceForm from "./ExperienceForm";
+import { pdf } from "@react-pdf/renderer";
+import CVDocument from "./CVDocument";
+import PDFPreview from "./PDFPreview";
 import CVPreview from "./CVPreview";
 import {
   Download,
@@ -61,6 +64,26 @@ const App = () => {
 
   const [showPreview, setShowPreview] = useState(false);
 
+  const handleDownload = async () => {
+    try {
+      await generatePDF(sections);
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+    }
+  };
+
+  const generatePDF = async (data) => {
+    const blob = await pdf(<CVDocument data={data} />).toBlob();
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "my-cv.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   const toggleSection = (sectionName) => {
     setSections((prev) => ({
       ...prev,
@@ -108,7 +131,7 @@ const App = () => {
           className="preview-btn"
           onClick={() => {
             setShowPreview(!showPreview);
-            const previewSection = document.querySelector(".cv-preview");
+            const previewSection = document.querySelector(".pdf-preview");
             previewSection.scrollIntoView({ behavior: "smooth" });
             console.log(previewSection);
           }}
@@ -116,7 +139,7 @@ const App = () => {
           <Eye size={20} />
           Preview
         </button>
-        <button className="download-btn">
+        <button className="download-btn" onClick={handleDownload}>
           <Download size={20} />
           Download to PDF
         </button>
@@ -170,7 +193,9 @@ const App = () => {
         isExpanded={true}
         onToggle={() => setShowPreview(!showPreview)}
       >
-        <CVPreview data={sections} />
+        <div className="pdf-preview">
+          <PDFPreview data={sections} />
+        </div>
       </Section>
     </div>
   );
