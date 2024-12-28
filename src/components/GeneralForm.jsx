@@ -3,7 +3,12 @@ import { Edit2 } from "lucide-react";
 import "../styles/Forms.css";
 
 const GeneralForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
-  const [formData, setFormData] = useState(data);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    location: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();

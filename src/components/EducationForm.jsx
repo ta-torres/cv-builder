@@ -3,7 +3,15 @@ import { Edit2, Plus } from "lucide-react";
 import "../styles/Forms.css";
 
 const EducationForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
-  const [formData, setFormData] = useState(data);
+  const [formData, setFormData] = useState([
+    {
+      school: "",
+      degree: "",
+      startDate: "",
+      endDate: "",
+      location: "",
+    },
+  ]);
 
   const addEducation = () => {
     setFormData([

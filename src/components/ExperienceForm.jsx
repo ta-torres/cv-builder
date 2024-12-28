@@ -3,7 +3,16 @@ import { Edit2, Plus } from "lucide-react";
 import "../styles/Forms.css";
 
 const ExperienceForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
-  const [formData, setFormData] = useState(data);
+  const [formData, setFormData] = useState([
+    {
+      company: "",
+      position: "",
+      startDate: "",
+      endDate: "",
+      responsibilities: ["", "", ""],
+      location: "",
+    },
+  ]);
 
   const addExperience = () => {
     setFormData([
@@ -13,7 +22,7 @@ const ExperienceForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
         position: "",
         startDate: "",
         endDate: "",
-        responsibilities: [""],
+        responsibilities: ["", "", ""],
         location: "",
       },
     ]);

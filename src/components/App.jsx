@@ -18,7 +18,7 @@ import logo from "../assets/logo-cv.svg";
 import "../styles/App.css";
 
 const App = () => {
-  const [sections, setSections] = useState({
+  const dummyData = {
     generalInfo: {
       isExpanded: true,
       isEditing: false,
@@ -60,8 +60,9 @@ const App = () => {
         },
       ],
     },
-  });
+  };
 
+  const [sections, setSections] = useState(dummyData);
   const [showPreview, setShowPreview] = useState(false);
 
   const handleDownload = async () => {
