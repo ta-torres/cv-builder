@@ -25,6 +25,13 @@ const CVDocument = ({ data }) => (
         </View>
       </View>
 
+      <View style={styles.cv_section}>
+        <Text style={styles.cv_section_title}>Summary</Text>
+        <View style={styles.summary_section}>
+          <Text style={styles.summary_text}>{data.summary.data.summary}</Text>
+        </View>
+      </View>
+
       {/* Education */}
       <View style={styles.cv_section}>
         <Text style={styles.cv_section_title}>Education</Text>
@@ -133,6 +140,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: "16px",
   },
+  summary_section: {},
+  summary_text: {},
   education_item: {},
   education_header: {
     display: "flex",

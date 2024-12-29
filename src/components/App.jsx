@@ -3,6 +3,7 @@ import Section from "./Section";
 import GeneralForm from "./GeneralForm";
 import EducationForm from "./EducationForm";
 import ExperienceForm from "./ExperienceForm";
+import SummaryForm from "./SummaryForm";
 import { pdf } from "@react-pdf/renderer";
 import CVDocument from "./CVDocument";
 import PDFPreview from "./PDFPreview";
@@ -13,6 +14,7 @@ import {
   CircleUserRound,
   BriefcaseBusiness,
   Eye,
+  FileText,
 } from "lucide-react";
 import logo from "../assets/logo-cv.svg";
 import "../styles/App.css";
@@ -59,6 +61,14 @@ const App = () => {
           location: "location",
         },
       ],
+    },
+    summary: {
+      isExpanded: true,
+      isEditing: false,
+      data: {
+        summary:
+          "A brief summary of your professional background, goals, and experience.",
+      },
     },
   };
 
@@ -157,6 +167,20 @@ const App = () => {
           isEditing={sections.generalInfo.isEditing}
           onToggleEdit={() => toggleEdit("generalInfo")}
           onSubmit={(data) => updateSectionData("generalInfo", data)}
+        />
+      </Section>
+
+      <Section
+        title="Summary"
+        icon={<FileText />}
+        isExpanded={sections.summary.isExpanded}
+        onToggle={() => toggleSection("summary")}
+      >
+        <SummaryForm
+          data={sections.summary.data}
+          isEditing={sections.summary.isEditing}
+          onToggleEdit={() => toggleEdit("summary")}
+          onSubmit={(data) => updateSectionData("summary", data)}
         />
       </Section>
 
