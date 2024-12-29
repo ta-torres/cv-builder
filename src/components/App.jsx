@@ -5,6 +5,7 @@ import EducationForm from "./EducationForm";
 import ExperienceForm from "./ExperienceForm";
 import SummaryForm from "./SummaryForm";
 import SkillsForm from "./SkillsForm";
+import ProjectsForm from "./ProjectsForm";
 import { pdf } from "@react-pdf/renderer";
 import CVDocument from "./CVDocument";
 import PDFPreview from "./PDFPreview";
@@ -17,6 +18,7 @@ import {
   Eye,
   FileText,
   Lightbulb,
+  FolderGit2,
 } from "lucide-react";
 import logo from "../assets/logo-cv.svg";
 import "../styles/App.css";
@@ -85,6 +87,18 @@ const App = () => {
           skills: ["React", "Flask", "Django"],
         },
         { category: "Tools", skills: ["Git"] },
+      ],
+    },
+    projects: {
+      isExpanded: true,
+      isEditing: false,
+      data: [
+        {
+          name: "Project name",
+          description: "Project description",
+          link: "https://github.com/",
+          features: ["Feature 1", "Feature 2", "Feature 3"],
+        },
       ],
     },
   };
@@ -240,6 +254,20 @@ const App = () => {
           isEditing={sections.experience.isEditing}
           onToggleEdit={() => toggleEdit("experience")}
           onSubmit={(data) => updateSectionData("experience", data)}
+        />
+      </Section>
+
+      <Section
+        title="Personal Projects"
+        icon={<FolderGit2 />}
+        isExpanded={sections.projects.isExpanded}
+        onToggle={() => toggleSection("projects")}
+      >
+        <ProjectsForm
+          data={sections.projects.data}
+          isEditing={sections.projects.isEditing}
+          onToggleEdit={() => toggleEdit("projects")}
+          onSubmit={(data) => updateSectionData("projects", data)}
         />
       </Section>
 

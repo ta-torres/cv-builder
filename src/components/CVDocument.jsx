@@ -102,6 +102,33 @@ const CVDocument = ({ data }) => (
           </View>
         ))}
       </View>
+
+      <View style={styles.cv_section}>
+        <Text style={styles.cv_section_title}>Personal Projects</Text>
+        {data.projects.data.map((project, index) => (
+          <View key={index} style={styles.experience_item}>
+            <View style={styles.experience_header}>
+              <Text style={styles.position}>{project.name}</Text>
+              <Text style={styles.company}>{project.link}</Text>
+            </View>
+
+            <View style={styles.experience_details}>
+              <Text>{project.description}</Text>
+            </View>
+
+            <View style={styles.list}>
+              {project.features.map((feature, idx) => (
+                <View key={idx} style={styles.list_item}>
+                  <View style={styles.list_bullet}>
+                    <Text>•{"  "}</Text>
+                  </View>
+                  <Text style={styles.list_text}>{feature}</Text>
+                </View>
+              ))}
+            </View>
+          </View>
+        ))}
+      </View>
     </Page>
   </Document>
 );
@@ -235,6 +262,10 @@ const styles = StyleSheet.create({
     fontSize: "18px",
   },
   list_text: {},
+  project_link: {
+    color: "#2563eb",
+    textDecoration: "underline",
+  },
 });
 
 export default CVDocument;
