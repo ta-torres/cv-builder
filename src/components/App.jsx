@@ -4,6 +4,7 @@ import GeneralForm from "./GeneralForm";
 import EducationForm from "./EducationForm";
 import ExperienceForm from "./ExperienceForm";
 import SummaryForm from "./SummaryForm";
+import SkillsForm from "./SkillsForm";
 import { pdf } from "@react-pdf/renderer";
 import CVDocument from "./CVDocument";
 import PDFPreview from "./PDFPreview";
@@ -15,6 +16,7 @@ import {
   BriefcaseBusiness,
   Eye,
   FileText,
+  Lightbulb,
 } from "lucide-react";
 import logo from "../assets/logo-cv.svg";
 import "../styles/App.css";
@@ -69,6 +71,21 @@ const App = () => {
         summary:
           "A brief summary of your professional background, goals, and experience.",
       },
+    },
+    skills: {
+      isExpanded: true,
+      isEditing: false,
+      data: [
+        {
+          category: "Programming Languages",
+          skills: ["JavaScript", "Python", "SQL"],
+        },
+        {
+          category: "Frameworks",
+          skills: ["React", "Flask", "Django"],
+        },
+        { category: "Tools", skills: ["Git"] },
+      ],
     },
   };
 
@@ -181,6 +198,20 @@ const App = () => {
           isEditing={sections.summary.isEditing}
           onToggleEdit={() => toggleEdit("summary")}
           onSubmit={(data) => updateSectionData("summary", data)}
+        />
+      </Section>
+
+      <Section
+        title="Skills"
+        icon={<Lightbulb />}
+        isExpanded={sections.skills.isExpanded}
+        onToggle={() => toggleSection("skills")}
+      >
+        <SkillsForm
+          data={sections.skills.data}
+          isEditing={sections.skills.isEditing}
+          onToggleEdit={() => toggleEdit("skills")}
+          onSubmit={(data) => updateSectionData("skills", data)}
         />
       </Section>
 

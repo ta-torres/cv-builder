@@ -32,6 +32,27 @@ const CVDocument = ({ data }) => (
         </View>
       </View>
 
+      <View style={styles.cv_section}>
+        <Text style={styles.cv_section_title}>Skills</Text>
+        {data.skills.data.map((category, index) => (
+          <View key={index} style={styles.skills_section}>
+            <Text style={styles.skill_category}>{category.category}</Text>
+            <View style={styles.skills_list}>
+              {category.skills
+                .filter((skill) => skill)
+                .map((skill, idx) => (
+                  <View key={idx} style={styles.list_item}>
+                    <View style={styles.list_bullet}>
+                      <Text> •</Text>
+                    </View>
+                    <Text style={styles.list_text}>{skill}</Text>
+                  </View>
+                ))}
+            </View>
+          </View>
+        ))}
+      </View>
+
       {/* Education */}
       <View style={styles.cv_section}>
         <Text style={styles.cv_section_title}>Education</Text>
@@ -142,6 +163,20 @@ const styles = StyleSheet.create({
   },
   summary_section: {},
   summary_text: {},
+  skills_section: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  skill_category: {
+    fontWeight: "bold",
+  },
+  skills_list: {
+    display: "flex",
+    flexDirection: "row",
+    gap: "8px",
+    paddingLeft: "8px",
+    lineHeight: "0.8",
+  },
   education_item: {},
   education_header: {
     display: "flex",
@@ -194,7 +229,6 @@ const styles = StyleSheet.create({
   list_item: {
     display: "flex",
     flexDirection: "row",
-    color: "#444",
   },
   list_bullet: {
     transform: "translateY(-2px)",
