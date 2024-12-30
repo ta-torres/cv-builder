@@ -138,20 +138,22 @@ const ExperienceForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
   ) : (
     <div>
       {data.map((exp, index) => (
-        <div key={index} className="education-display">
-          <div className="education-header">
-            <h3>{exp.company}</h3>
-            <span>{exp.location}</span>
-          </div>
-          <div className="education-details">
-            <p>{exp.position}</p>
+        <div key={index} className="preview-container">
+          <div className="preview-header">
+            <h3>{exp.position}</h3>
             <span>
               {exp.startDate} - {exp.endDate}
             </span>
           </div>
-          <ul className="responsibilities">
+          <div className="preview-details">
+            <p>{exp.company}</p>
+            <span>{exp.location}</span>
+          </div>
+          <ul className="preview-list">
             {exp.responsibilities.map((responsibility, idx) => (
-              <li key={idx}>{responsibility}</li>
+              <li key={idx} className="preview-list-item">
+                {responsibility}
+              </li>
             ))}
           </ul>
         </div>

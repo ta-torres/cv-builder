@@ -33,8 +33,8 @@ const SummaryForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
       </div>
     </form>
   ) : (
-    <div className="general-info">
-      <div className="info-container">
+    <div className="preview-container">
+      <div className="preview-content">
         <p>{data.summary}</p>
       </div>
       <button onClick={onToggleEdit} className="edit-btn">

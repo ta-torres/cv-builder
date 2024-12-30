@@ -111,16 +111,16 @@ const EducationForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
   ) : (
     <div>
       {data.map((edu, index) => (
-        <div key={index} className="education-display">
-          <div className="education-header">
-            <h3>{edu.school}</h3>
-            <span>{edu.location}</span>
-          </div>
-          <div className="education-details">
-            <p>{edu.degree}</p>
+        <div key={index} className="preview-container">
+          <div className="preview-header">
+            <h3>{edu.degree}</h3>
             <span>
               {edu.startDate} - {edu.endDate}
             </span>
+          </div>
+          <div className="preview-details">
+            <p>{edu.school}</p>
+            <span>{edu.location}</span>
           </div>
         </div>
       ))}

@@ -31,6 +31,14 @@
   font-size: 0.875rem;
 }
 
+.form textarea {
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: inherit;
+  font-family: inherit;
+}
+
 .form-buttons {
   display: flex;
   gap: 0.5rem;
@@ -80,6 +88,9 @@
   background-color: #f3f4f6;
   border-radius: 0.5rem;
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .education-display {
@@ -97,4 +108,45 @@
   display: flex;
   justify-content: space-between;
   color: #6b7280;
+}
+
+.edit-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #4b5563;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.25rem;
+}
+
+.preview-details {
+  display: flex;
+  justify-content: space-between;
+  color: #6b7280;
+  margin: 4px 0;
+}
+
+.preview-list {
+  margin-top: 0.5rem;
+  padding-left: 1.25rem;
+  list-style-type: disc;
+}
+
+.preview-list-item {
+  margin-bottom: 0.25rem;
+  color: #374151;
+}
+
+.preview-link {
+  color: #2563eb;
+  text-decoration: underline;
 }

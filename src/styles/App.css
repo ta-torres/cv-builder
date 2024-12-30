@@ -18,7 +18,10 @@ body {
 }
 
 .header {
-  margin-bottom: 1.5rem;
+  background-color: #dbecec;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
 
 .logo-container {
@@ -39,22 +42,18 @@ body {
 }
 
 .save-section {
-  background-color: white;
+  background-color: #dbecec;
   border-radius: 0.5rem;
   padding: 1rem;
   margin-bottom: 1rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   display: flex;
+  gap: 1rem;
   justify-content: space-between;
   align-items: center;
 }
 
-.save-text {
-  font-style: italic;
-  font-weight: 500;
-}
-
-.download-btn {
+.btn {
   background-color: #2563eb;
   color: white;
   padding: 0.5rem 1rem;
@@ -64,6 +63,27 @@ body {
   gap: 0.5rem;
   border: none;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.preview-btn {
+  background-color: #4b5563;
+}
+
+.preview-btn:hover {
+  background-color: #374151;
+}
+
+.preview-btn:active {
+  transform: scale(0.98);
+}
+
+.download-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.download-btn:active {
+  transform: scale(0.98);
 }
 
 .general-info {
@@ -78,16 +98,6 @@ body {
 
 .info-container p {
   color: #4b5563;
-}
-
-.edit-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  color: #4b5563;
-  background: none;
-  border: none;
-  cursor: pointer;
 }
 
 @media (min-width: 1024px) {

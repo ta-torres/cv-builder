@@ -106,24 +106,26 @@ const ProjectsForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
   ) : (
     <div>
       {data.map((project, index) => (
-        <div key={index} className="education-display">
-          <div className="education-header">
+        <div key={index} className="preview-container">
+          <div className="preview-header">
             <h3>{project.name}</h3>
             <a
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="project-link"
+              className="preview-link"
             >
               View Project
             </a>
           </div>
-          <div className="education-details">
+          <div className="preview-details">
             <p>{project.description}</p>
           </div>
-          <ul className="responsibilities">
+          <ul className="preview-list">
             {project.features.map((feature, idx) => (
-              <li key={idx}>{feature}</li>
+              <li key={idx} className="preview-list-item">
+                {feature}
+              </li>
             ))}
           </ul>
         </div>

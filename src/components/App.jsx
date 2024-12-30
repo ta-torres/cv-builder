@@ -170,7 +170,7 @@ const App = () => {
 
       <div className="save-section">
         <button
-          className="preview-btn"
+          className="preview-btn btn"
           onClick={() => {
             setShowPreview(!showPreview);
             const previewSection = document.querySelector(".pdf-preview");
@@ -181,7 +181,7 @@ const App = () => {
           <Eye size={20} />
           Preview
         </button>
-        <button className="download-btn" onClick={handleDownload}>
+        <button className="download-btn btn" onClick={handleDownload}>
           <Download size={20} />
           Download to PDF
         </button>

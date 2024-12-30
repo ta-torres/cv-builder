@@ -81,13 +81,15 @@ const SkillsForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
   ) : (
     <div>
       {data.map((category, index) => (
-        <div key={index} className="education-display">
+        <div key={index} className="preview-container">
           <h3>{category.category}</h3>
-          <ul className="skills-list">
+          <ul className="preview-list">
             {category.skills
               .filter((skill) => skill)
               .map((skill, idx) => (
-                <li key={idx}>{skill}</li>
+                <li key={idx} className="preview-list-item">
+                  {skill}
+                </li>
               ))}
           </ul>
         </div>
