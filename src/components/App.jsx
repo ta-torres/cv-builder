@@ -187,100 +187,106 @@ const App = () => {
         </button>
       </div>
 
-      <Section
-        title="General Information"
-        icon={<CircleUserRound />}
-        isExpanded={sections.generalInfo.isExpanded}
-        onToggle={() => toggleSection("generalInfo")}
-      >
-        <GeneralForm
-          data={sections.generalInfo.data}
-          isEditing={sections.generalInfo.isEditing}
-          onToggleEdit={() => toggleEdit("generalInfo")}
-          onSubmit={(data) => updateSectionData("generalInfo", data)}
-        />
-      </Section>
+      <main className="main-content">
+        <section className="left-column">
+          <Section
+            title="General Information"
+            icon={<CircleUserRound />}
+            isExpanded={sections.generalInfo.isExpanded}
+            onToggle={() => toggleSection("generalInfo")}
+          >
+            <GeneralForm
+              data={sections.generalInfo.data}
+              isEditing={sections.generalInfo.isEditing}
+              onToggleEdit={() => toggleEdit("generalInfo")}
+              onSubmit={(data) => updateSectionData("generalInfo", data)}
+            />
+          </Section>
 
-      <Section
-        title="Summary"
-        icon={<FileText />}
-        isExpanded={sections.summary.isExpanded}
-        onToggle={() => toggleSection("summary")}
-      >
-        <SummaryForm
-          data={sections.summary.data}
-          isEditing={sections.summary.isEditing}
-          onToggleEdit={() => toggleEdit("summary")}
-          onSubmit={(data) => updateSectionData("summary", data)}
-        />
-      </Section>
+          <Section
+            title="Summary"
+            icon={<FileText />}
+            isExpanded={sections.summary.isExpanded}
+            onToggle={() => toggleSection("summary")}
+          >
+            <SummaryForm
+              data={sections.summary.data}
+              isEditing={sections.summary.isEditing}
+              onToggleEdit={() => toggleEdit("summary")}
+              onSubmit={(data) => updateSectionData("summary", data)}
+            />
+          </Section>
 
-      <Section
-        title="Skills"
-        icon={<Lightbulb />}
-        isExpanded={sections.skills.isExpanded}
-        onToggle={() => toggleSection("skills")}
-      >
-        <SkillsForm
-          data={sections.skills.data}
-          isEditing={sections.skills.isEditing}
-          onToggleEdit={() => toggleEdit("skills")}
-          onSubmit={(data) => updateSectionData("skills", data)}
-        />
-      </Section>
+          <Section
+            title="Skills"
+            icon={<Lightbulb />}
+            isExpanded={sections.skills.isExpanded}
+            onToggle={() => toggleSection("skills")}
+          >
+            <SkillsForm
+              data={sections.skills.data}
+              isEditing={sections.skills.isEditing}
+              onToggleEdit={() => toggleEdit("skills")}
+              onSubmit={(data) => updateSectionData("skills", data)}
+            />
+          </Section>
 
-      <Section
-        title="Education"
-        icon={<GraduationCap />}
-        isExpanded={sections.education.isExpanded}
-        onToggle={() => toggleSection("education")}
-      >
-        <EducationForm
-          data={sections.education.data}
-          isEditing={sections.education.isEditing}
-          onToggleEdit={() => toggleEdit("education")}
-          onSubmit={(data) => updateSectionData("education", data)}
-        />
-      </Section>
+          <Section
+            title="Education"
+            icon={<GraduationCap />}
+            isExpanded={sections.education.isExpanded}
+            onToggle={() => toggleSection("education")}
+          >
+            <EducationForm
+              data={sections.education.data}
+              isEditing={sections.education.isEditing}
+              onToggleEdit={() => toggleEdit("education")}
+              onSubmit={(data) => updateSectionData("education", data)}
+            />
+          </Section>
 
-      <Section
-        title="Experience"
-        icon={<BriefcaseBusiness />}
-        isExpanded={sections.experience.isExpanded}
-        onToggle={() => toggleSection("experience")}
-      >
-        <ExperienceForm
-          data={sections.experience.data}
-          isEditing={sections.experience.isEditing}
-          onToggleEdit={() => toggleEdit("experience")}
-          onSubmit={(data) => updateSectionData("experience", data)}
-        />
-      </Section>
+          <Section
+            title="Experience"
+            icon={<BriefcaseBusiness />}
+            isExpanded={sections.experience.isExpanded}
+            onToggle={() => toggleSection("experience")}
+          >
+            <ExperienceForm
+              data={sections.experience.data}
+              isEditing={sections.experience.isEditing}
+              onToggleEdit={() => toggleEdit("experience")}
+              onSubmit={(data) => updateSectionData("experience", data)}
+            />
+          </Section>
 
-      <Section
-        title="Personal Projects"
-        icon={<FolderGit2 />}
-        isExpanded={sections.projects.isExpanded}
-        onToggle={() => toggleSection("projects")}
-      >
-        <ProjectsForm
-          data={sections.projects.data}
-          isEditing={sections.projects.isEditing}
-          onToggleEdit={() => toggleEdit("projects")}
-          onSubmit={(data) => updateSectionData("projects", data)}
-        />
-      </Section>
+          <Section
+            title="Personal Projects"
+            icon={<FolderGit2 />}
+            isExpanded={sections.projects.isExpanded}
+            onToggle={() => toggleSection("projects")}
+          >
+            <ProjectsForm
+              data={sections.projects.data}
+              isEditing={sections.projects.isEditing}
+              onToggleEdit={() => toggleEdit("projects")}
+              onSubmit={(data) => updateSectionData("projects", data)}
+            />
+          </Section>
+        </section>
 
-      <Section
-        title="Preview"
-        icon={<Eye />}
-        isExpanded={true}
-        onToggle={() => setShowPreview(!showPreview)}
-      >
-        <div className="pdf-preview">
-          <PDFPreview data={sections} />
-        </div>
-      </Section>
+        <section className="right-column">
+          <Section
+            title="Preview"
+            icon={<Eye />}
+            isExpanded={true}
+            onToggle={() => setShowPreview(!showPreview)}
+          >
+            <div className="pdf-preview">
+              <PDFPreview data={sections} />
+            </div>
+          </Section>
+        </section>
+      </main>
     </div>
   );
 };
