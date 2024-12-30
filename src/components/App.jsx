@@ -9,7 +9,6 @@ import ProjectsForm from "./ProjectsForm";
 import { pdf } from "@react-pdf/renderer";
 import CVDocument from "./CVDocument";
 import PDFPreview from "./PDFPreview";
-import CVPreview from "./CVPreview";
 import {
   Download,
   GraduationCap,
@@ -175,7 +174,6 @@ const App = () => {
             setShowPreview(!showPreview);
             const previewSection = document.querySelector(".pdf-preview");
             previewSection.scrollIntoView({ behavior: "smooth" });
-            console.log(previewSection);
           }}
         >
           <Eye size={20} />
