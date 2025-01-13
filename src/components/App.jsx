@@ -2,6 +2,7 @@ import { useState } from "react";
 import Section from "./Section";
 import GeneralForm from "./GeneralForm";
 import EducationForm from "./EducationForm";
+import CoursesForm from "./CoursesForm";
 import ExperienceForm from "./ExperienceForm";
 import SummaryForm from "./SummaryForm";
 import SkillsForm from "./SkillsForm";
@@ -18,6 +19,7 @@ import {
   FileText,
   Lightbulb,
   FolderGit2,
+  Scroll,
 } from "lucide-react";
 import logo from "../assets/logo-cv.svg";
 import "../styles/App.css";
@@ -97,6 +99,18 @@ const App = () => {
           description: "Project description",
           link: "https://github.com/",
           features: ["Feature 1", "Feature 2", "Feature 3"],
+        },
+      ],
+    },
+    courses: {
+      isExpanded: true,
+      isEditing: false,
+      data: [
+        {
+          name: "Course name",
+          provider: "Provider name",
+          year: "2023",
+          description: "Course description",
         },
       ],
     },
@@ -240,6 +254,20 @@ const App = () => {
               isEditing={sections.education.isEditing}
               onToggleEdit={() => toggleEdit("education")}
               onSubmit={(data) => updateSectionData("education", data)}
+            />
+          </Section>
+
+          <Section
+            title="Courses and Certifications"
+            icon={<Scroll />}
+            isExpanded={sections.courses.isExpanded}
+            onToggle={() => toggleSection("courses")}
+          >
+            <CoursesForm
+              data={sections.courses.data}
+              isEditing={sections.courses.isEditing}
+              onToggleEdit={() => toggleEdit("courses")}
+              onSubmit={(data) => updateSectionData("courses", data)}
             />
           </Section>
 

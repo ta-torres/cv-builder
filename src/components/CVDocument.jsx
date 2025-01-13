@@ -72,6 +72,31 @@ const CVDocument = ({ data }) => (
         ))}
       </View>
 
+      <View style={styles.cv_section}>
+        <Text style={styles.cv_section_title}>Courses and Certifications</Text>
+        {data.courses.data.map((course, index) => (
+          <View key={index} style={styles.education_item}>
+            <View style={styles.course_header}>
+              <View style={styles.course_title}>
+                <Text style={styles.course_name}>{course.name}</Text>
+                <Text style={styles.course_provider}> - {course.provider}</Text>
+              </View>
+              <Text style={styles.dates}>{course.year}</Text>
+            </View>
+            {course.description && (
+              <View style={styles.list}>
+                <View style={styles.list_item}>
+                  <View style={styles.list_bullet}>
+                    <Text>•{"  "}</Text>
+                  </View>
+                  <Text style={styles.list_text}>{course.description}</Text>
+                </View>
+              </View>
+            )}
+          </View>
+        ))}
+      </View>
+
       {/* Experience */}
       <View style={styles.cv_section}>
         <Text style={styles.cv_section_title}>Experience</Text>
@@ -265,6 +290,25 @@ const styles = StyleSheet.create({
   project_link: {
     color: "#2563eb",
     textDecoration: "underline",
+  },
+  course_header: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "baseline",
+    paddingBottom: "2px",
+  },
+  course_title: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "baseline",
+  },
+  course_name: {
+    fontWeight: "bold",
+  },
+  course_provider: {
+    color: "#666",
+    fontWeight: "bold",
   },
 });
 
