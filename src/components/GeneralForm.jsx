@@ -5,6 +5,7 @@ import "../styles/Forms.css";
 const GeneralForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
   const [formData, setFormData] = useState({
     fullName: "",
+    jobTitle: "",
     email: "",
     phone: "",
     location: "",
@@ -26,6 +27,17 @@ const GeneralForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
             setFormData({ ...formData, fullName: e.target.value })
           }
           placeholder="Full Name"
+        />
+      </div>
+      <div className="form-group">
+        <label>Job Title</label>
+        <input
+          type="text"
+          value={formData.jobTitle}
+          onChange={(e) =>
+            setFormData({ ...formData, jobTitle: e.target.value })
+          }
+          placeholder="Job Title"
         />
       </div>
       <div className="form-group">
@@ -68,6 +80,7 @@ const GeneralForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
     <div className="preview-container">
       <div className="preview-content">
         <h3>{data.fullName}</h3>
+        <h4>{data.jobTitle}</h4>
         <p>{data.email}</p>
         <p>{data.phone}</p>
         <p>{data.location}</p>

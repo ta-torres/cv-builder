@@ -18,6 +18,7 @@ const CVDocument = ({ data }) => (
       {/* Header */}
       <View style={styles.cv_header}>
         <Text style={styles.name}>{data.generalInfo.data.fullName}</Text>
+        <Text style={styles.jobTitle}>{data.generalInfo.data.jobTitle}</Text>
         <View style={styles.contact_info}>
           <Text>{data.generalInfo.data.email}</Text>
           <Text>{data.generalInfo.data.phone}</Text>
@@ -204,6 +205,9 @@ const styles = StyleSheet.create({
   name: {
     fontSize: "20px",
     fontWeight: "bold",
+  },
+  jobTitle: {
+    fontSize: "16px",
   },
   contact_info: {
     display: "flex",

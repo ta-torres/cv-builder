@@ -31,6 +31,7 @@ const App = () => {
       isEditing: false,
       data: {
         fullName: "name",
+        jobTitle: "job title",
         email: "email",
         phone: "phone",
         location: "location",
