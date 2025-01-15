@@ -90,4 +90,4 @@ const cvData = {
   },
 };
 
-export default dummyData;
+export default cvData;
