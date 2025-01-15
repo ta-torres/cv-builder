@@ -7,10 +7,10 @@ import {
   Font,
 } from "@react-pdf/renderer";
 
-import ArialRegular from "../assets/fonts/arial/arial-regular.ttf";
-import ArialBold from "../assets/fonts/arial/arial-bold.ttf";
-import ArialItalic from "../assets/fonts/arial/arial-italic.ttf";
-import ArialBoldItalic from "../assets/fonts/arial/arial-bold-italic.ttf";
+import ArialRegular from "./fonts/arial/arial-regular.ttf";
+import ArialBold from "./fonts/arial/arial-bold.ttf";
+import ArialItalic from "./fonts/arial/arial-italic.ttf";
+import ArialBoldItalic from "./fonts/arial/arial-bold-italic.ttf";
 
 const CVDocument = ({ data }) => (
   <Document>
@@ -41,15 +41,15 @@ const CVDocument = ({ data }) => (
           <View style={styles.skills_section}>
             {data.skills.data.map((category, index) => (
               <View key={index} style={styles.skills_item}>
+                <View style={styles.list_bullet}>
+                  <Text> •</Text>
+                </View>
                 <Text style={styles.skill_category}>{category.category}</Text>
                 <View style={styles.skills_list}>
                   {category.skills
                     .filter((skill) => skill)
                     .map((skill, idx) => (
                       <View key={idx} style={styles.list_item}>
-                        <View style={styles.list_bullet}>
-                          <Text> •</Text>
-                        </View>
                         <Text style={styles.list_text}>{skill}</Text>
                       </View>
                     ))}

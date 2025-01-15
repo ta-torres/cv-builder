@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Edit2 } from "lucide-react";
-import "../styles/Forms.css";
+import "./Forms.css";
 
 const SummaryForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
   const [formData, setFormData] = useState({

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Edit2, Plus } from "lucide-react";
-import "../styles/Forms.css";
+import "./Forms.css";
 
 const ProjectsForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
   const [formData, setFormData] = useState([

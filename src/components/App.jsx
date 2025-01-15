@@ -1,15 +1,16 @@
 import { useState } from "react";
-import Section from "./Section";
-import GeneralForm from "./GeneralForm";
-import EducationForm from "./EducationForm";
-import CoursesForm from "./CoursesForm";
-import ExperienceForm from "./ExperienceForm";
-import SummaryForm from "./SummaryForm";
-import SkillsForm from "./SkillsForm";
-import ProjectsForm from "./ProjectsForm";
 import { pdf } from "@react-pdf/renderer";
-import CVDocument from "./CVDocument";
-import PDFPreview from "./PDFPreview";
+import Section from "./Section.jsx";
+import GeneralForm from "./Forms/GeneralForm";
+import EducationForm from "./Forms/EducationForm";
+import CoursesForm from "./Forms/CoursesForm";
+import ExperienceForm from "./Forms/ExperienceForm";
+import SummaryForm from "./Forms/SummaryForm";
+import SkillsForm from "./Forms/SkillsForm";
+import ProjectsForm from "./Forms/ProjectsForm";
+import CVDocument from "./Preview/CVDocument";
+import PDFPreview from "./Preview/PDFPreview";
+import cvData from "../utils/cvData.js";
 import {
   Download,
   GraduationCap,
@@ -22,103 +23,10 @@ import {
   Scroll,
 } from "lucide-react";
 import logo from "../assets/logo-cv.svg";
-import "../styles/App.css";
+import "./App.css";
 
 const App = () => {
-  const dummyData = {
-    generalInfo: {
-      isExpanded: true,
-      isEditing: false,
-      data: {
-        fullName: "name",
-        jobTitle: "job title",
-        email: "email",
-        phone: "phone",
-        location: "location",
-      },
-    },
-    education: {
-      isExpanded: true,
-      isEditing: false,
-      data: [
-        {
-          school: "school",
-          degree: "degree",
-          startDate: "start",
-          endDate: "end",
-          location: "location",
-        },
-      ],
-    },
-    experience: {
-      isExpanded: true,
-      isEditing: false,
-      data: [
-        {
-          company: "company",
-          position: "position",
-          startDate: "start",
-          endDate: "end",
-          responsibilities: [
-            "responsibility1",
-            "responsibility2",
-            "responsibility3",
-          ],
-          location: "location",
-        },
-      ],
-    },
-    summary: {
-      isExpanded: true,
-      isEditing: false,
-      data: {
-        summary:
-          "A brief summary of your professional background, goals, and experience.",
-      },
-    },
-    skills: {
-      isExpanded: true,
-      isEditing: false,
-      data: [
-        {
-          category: "Programming Languages",
-          skills: ["JavaScript", "Python", "SQL"],
-        },
-        {
-          category: "Frameworks",
-          skills: ["React", "Flask", "Django"],
-        },
-        { category: "Tools", skills: ["Git"] },
-      ],
-    },
-    projects: {
-      isExpanded: true,
-      isEditing: false,
-      data: [
-        {
-          name: "Project name",
-          description: "Project description",
-          link: "https://github.com/",
-          features: ["Feature 1", "Feature 2", "Feature 3"],
-        },
-      ],
-    },
-    courses: {
-      isExpanded: true,
-      isEditing: false,
-      data: [
-        {
-          name: "Course name",
-          provider: "Provider name",
-          year: "2023",
-          description: "Course description",
-        },
-      ],
-    },
-  };
-
-  const [sections, setSections] = useState(dummyData);
-  const [showPreview, setShowPreview] = useState(false);
+  const [sections, setSections] = useState(cvData);
 
   const handleDownload = async () => {
     try {
@@ -186,7 +94,6 @@ const App = () => {
         <button
           className="preview-btn btn"
           onClick={() => {
-            setShowPreview(!showPreview);
             const previewSection = document.querySelector(".pdf-preview");
             previewSection.scrollIntoView({ behavior: "smooth" });
           }}
@@ -302,12 +209,7 @@ const App = () => {
         </section>
 
         <section className="right-column">
-          <Section
-            title="Preview"
-            icon={<Eye />}
-            isExpanded={true}
-            onToggle={() => setShowPreview(!showPreview)}
-          >
+          <Section title="Preview" icon={<Eye />} isExpanded={true}>
             <div className="pdf-preview">
               <PDFPreview data={sections} />
             </div>

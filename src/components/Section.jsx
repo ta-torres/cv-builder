@@ -1,5 +1,5 @@
 import { ChevronDown } from "lucide-react";
-import "../styles/Section.css";
+import "./Section.css";
 
 const Section = ({ title, icon, isExpanded, onToggle, children }) => {
   return (
