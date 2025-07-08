@@ -7,7 +7,7 @@ const cvData = {
       jobTitle: "job title",
       email: "email",
       phone: "phone",
-      location: "location",
+      webpage: "webpage",
     },
   },
   education: {

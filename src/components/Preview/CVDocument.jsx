@@ -22,7 +22,7 @@ const CVDocument = ({ data }) => (
         <View style={styles.contact_info}>
           <Text>{data.generalInfo.data.email}</Text>
           <Text>{data.generalInfo.data.phone}</Text>
-          <Text>{data.generalInfo.data.location}</Text>
+          <Text>{data.generalInfo.data.webpage}</Text>
         </View>
       </View>
 
@@ -41,10 +41,14 @@ const CVDocument = ({ data }) => (
           <View style={styles.skills_section}>
             {data.skills.data.map((category, index) => (
               <View key={index} style={styles.skills_item}>
-                <View style={styles.list_bullet}>
-                  <Text> •</Text>
+                <View style={styles.list}>
+                  <View style={styles.list_bullet}>
+                    <Text>•{"  "}</Text>
+                  </View>
                 </View>
-                <Text style={styles.skill_category}>{category.category}</Text>
+                <View style={styles.skill_category_container}>
+                  <Text style={styles.skill_category}>{category.category}</Text>
+                </View>
                 <View style={styles.skills_list}>
                   <Text style={styles.list_text}>{category.skills}</Text>
                 </View>
@@ -62,7 +66,7 @@ const CVDocument = ({ data }) => (
                 <View style={styles.education_header}>
                   <Text style={styles.degree}>{edu.degree}</Text>
                   <Text style={styles.dates}>
-                    {edu.endDate} - {edu.startDate}
+                    {edu.startDate} - {edu.endDate}
                   </Text>
                 </View>
                 <View style={styles.education_details}>
@@ -87,7 +91,7 @@ const CVDocument = ({ data }) => (
                     <Text style={styles.course_name}>{course.name}</Text>
                     <Text style={styles.course_provider}>
                       {" "}
-                      - {course.provider}
+                      ({course.provider})
                     </Text>
                   </View>
                   <Text style={styles.dates}>{course.year}</Text>
@@ -116,7 +120,7 @@ const CVDocument = ({ data }) => (
                 <View style={styles.experience_header}>
                   <Text style={styles.position}>{exp.position}</Text>
                   <Text style={styles.dates}>
-                    {exp.endDate} - {exp.startDate}
+                    {exp.startDate} - {exp.endDate}
                   </Text>
                 </View>
 
@@ -188,6 +192,7 @@ const styles = StyleSheet.create({
     padding: "40px",
     fontFamily: "Arial",
     fontSize: "12px",
+    margin: "0",
   },
   cv_header: {
     display: "flex",
@@ -208,7 +213,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     gap: "12px",
-    color: "#666",
     fontSize: "14px",
     alignItems: "baseline",
   },
@@ -236,6 +240,11 @@ const styles = StyleSheet.create({
   skills_item: {
     display: "flex",
     flexDirection: "row",
+    alignItems: "flex-start",
+  },
+  skill_category_container: {
+    // width: "80px",
+    minWidth: "80px", //change later
   },
   skill_category: {
     fontWeight: "bold",
@@ -243,9 +252,13 @@ const styles = StyleSheet.create({
   skills_list: {
     display: "flex",
     flexDirection: "row",
-    gap: "8px",
+    // gap: "6px",
     paddingLeft: "8px",
     lineHeight: "0.8",
+    flex: "1",
+    flexWrap: "wrap",
+    alignItems: "flex-start",
+    // paddingBottom: "8px",
   },
   education_section: {
     paddingTop: "4px",
@@ -298,7 +311,7 @@ const styles = StyleSheet.create({
   },
   list: {
     paddingLeft: "10px",
-    lineHeight: "0.9",
+    lineHeight: "0.8",
   },
   list_item: {
     display: "flex",
@@ -308,7 +321,13 @@ const styles = StyleSheet.create({
     transform: "translateY(-3px)",
     fontSize: "18px",
   },
-  list_text: {},
+  list_text: {
+    lineHeight: "0.8",
+    whiteSpace: "nowrap",
+    // fontSize: "12px",
+    // marginBottom: "0",
+    // paddingBottom: "2px",
+  },
   project_link: {
     color: "#2563eb",
     textDecoration: "underline",
@@ -328,10 +347,7 @@ const styles = StyleSheet.create({
   course_name: {
     fontWeight: "bold",
   },
-  course_provider: {
-    color: "#666",
-    fontWeight: "bold",
-  },
+  course_provider: {},
 });
 
 export default CVDocument;

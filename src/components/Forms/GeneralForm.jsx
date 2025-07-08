@@ -8,7 +8,7 @@ const GeneralForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
     jobTitle: "",
     email: "",
     phone: "",
-    location: "",
+    webpage: "",
   });
 
   const handleSubmit = (e) => {
@@ -59,14 +59,14 @@ const GeneralForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
         />
       </div>
       <div className="form-group">
-        <label>Location</label>
+        <label>Webpage</label>
         <input
           type="text"
-          value={formData.location}
+          value={formData.webpage}
           onChange={(e) =>
-            setFormData({ ...formData, location: e.target.value })
+            setFormData({ ...formData, webpage: e.target.value })
           }
-          placeholder="City, Country"
+          placeholder="https://example.com"
         />
       </div>
       <div className="form-buttons">
@@ -83,7 +83,11 @@ const GeneralForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
         <h4>{data.jobTitle}</h4>
         <p>{data.email}</p>
         <p>{data.phone}</p>
-        <p>{data.location}</p>
+        <p>
+          <a href={data.webpage} target="_blank" rel="noopener noreferrer">
+            {data.webpage}
+          </a>
+        </p>
       </div>
       <button onClick={onToggleEdit} className="edit-btn">
         <Edit2 size={20} />
