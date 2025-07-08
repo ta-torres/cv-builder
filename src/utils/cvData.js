@@ -53,15 +53,9 @@ const cvData = {
     isExpanded: true,
     isEditing: false,
     data: [
-      {
-        category: "Category 1",
-        skills: ["Skill 1", "Skill 2", "Skill 3"],
-      },
-      {
-        category: "Category 2",
-        skills: ["Skill 1", "Skill 2", "Skill 3"],
-      },
-      { category: "Category 3", skills: ["Skill 1"] },
+      { category: "Category 1", skills: "Skills" },
+      { category: "Category 2", skills: "Skills" },
+      { category: "Category 3", skills: "Skills" },
     ],
   },
   projects: {

@@ -6,7 +6,7 @@ const SkillsForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
   const [formData, setFormData] = useState([
     {
       category: "",
-      skills: ["", "", ""],
+      skills: "",
     },
   ]);
 
@@ -15,7 +15,7 @@ const SkillsForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
       ...formData,
       {
         category: "",
-        skills: ["", "", ""],
+        skills: "",
       },
     ]);
   };
@@ -26,9 +26,9 @@ const SkillsForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
     setFormData(newData);
   };
 
-  const updateSkill = (categoryIndex, skillIndex, value) => {
+  const updateSkill = (categoryIndex, value) => {
     const newData = [...formData];
-    newData[categoryIndex].skills[skillIndex] = value;
+    newData[categoryIndex].skills = value;
     setFormData(newData);
   };
 
@@ -52,18 +52,14 @@ const SkillsForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
             />
           </div>
           <div className="form-group">
-            <label>Skills (up to 3)</label>
-            {category.skills.map((skill, skillIndex) => (
-              <input
-                key={skillIndex}
-                type="text"
-                value={skill}
-                onChange={(e) =>
-                  updateSkill(categoryIndex, skillIndex, e.target.value)
-                }
-                placeholder="Enter a skill"
-              />
-            ))}
+            <label>Skills</label>
+
+            <input
+              type="text"
+              value={category.skills}
+              onChange={(e) => updateSkill(categoryIndex, e.target.value)}
+              placeholder="Enter a skill"
+            />
           </div>
         </div>
       ))}
@@ -84,13 +80,7 @@ const SkillsForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
         <div key={index} className="preview-container">
           <h3>{category.category}</h3>
           <ul className="preview-list">
-            {category.skills
-              .filter((skill) => skill)
-              .map((skill, idx) => (
-                <li key={idx} className="preview-list-item">
-                  {skill}
-                </li>
-              ))}
+            <li className="preview-list-item">{category.skills}</li>
           </ul>
         </div>
       ))}

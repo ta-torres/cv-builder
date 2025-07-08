@@ -46,13 +46,7 @@ const CVDocument = ({ data }) => (
                 </View>
                 <Text style={styles.skill_category}>{category.category}</Text>
                 <View style={styles.skills_list}>
-                  {category.skills
-                    .filter((skill) => skill)
-                    .map((skill, idx) => (
-                      <View key={idx} style={styles.list_item}>
-                        <Text style={styles.list_text}>{skill}</Text>
-                      </View>
-                    ))}
+                  <Text style={styles.list_text}>{category.skills}</Text>
                 </View>
               </View>
             ))}
