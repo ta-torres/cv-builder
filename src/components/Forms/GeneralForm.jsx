@@ -1,17 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Edit2 } from "lucide-react";
 import "./Forms.css";
 
-const GeneralForm = ({ data, onSubmit }) => {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    jobTitle: "",
-    email: "",
-    phone: "",
-    webpage: "",
-  });
-
+const GeneralForm = ({ data, onSubmit, hasEdited }) => {
+  const [formData, setFormData] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
+
+  useEffect(() => {
+    if (hasEdited) {
+      setFormData(data);
+    } else {
+      setFormData({
+        fullName: "",
+        jobTitle: "",
+        email: "",
+        phone: "",
+        location: "",
+      });
+    }
+  }, [data, hasEdited]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

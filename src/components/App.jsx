@@ -27,6 +27,7 @@ import "./App.css";
 
 const App = () => {
   const [sections, setSections] = useState(cvData);
+  const [editedSections, setEditedSections] = useState(new Set());
 
   const handleDownload = async () => {
     try {
@@ -55,6 +56,7 @@ const App = () => {
         data: newData,
       },
     }));
+    setEditedSections((prev) => new Set([...prev, sectionName]));
   };
 
   const exportToJson = () => {
@@ -76,6 +78,7 @@ const App = () => {
       try {
         const jsonData = JSON.parse(e.target.result);
         setSections(jsonData);
+        setEditedSections(new Set(Object.keys(jsonData))); //
       } catch (error) {
         console.error("Error parsing JSON:", error);
       }
@@ -126,6 +129,7 @@ const App = () => {
             <GeneralForm
               data={sections.generalInfo.data}
               onSubmit={(data) => updateSectionData("generalInfo", data)}
+              hasEdited={editedSections.has("generalInfo")}
             />
           </Section>
 
@@ -133,6 +137,7 @@ const App = () => {
             <SummaryForm
               data={sections.summary.data}
               onSubmit={(data) => updateSectionData("summary", data)}
+              hasEdited={editedSections.has("summary")}
             />
           </Section>
 
@@ -140,6 +145,7 @@ const App = () => {
             <SkillsForm
               data={sections.skills.data}
               onSubmit={(data) => updateSectionData("skills", data)}
+              hasEdited={editedSections.has("skills")}
             />
           </Section>
 
@@ -147,6 +153,7 @@ const App = () => {
             <EducationForm
               data={sections.education.data}
               onSubmit={(data) => updateSectionData("education", data)}
+              hasEdited={editedSections.has("education")}
             />
           </Section>
 
@@ -154,6 +161,7 @@ const App = () => {
             <CoursesForm
               data={sections.courses.data}
               onSubmit={(data) => updateSectionData("courses", data)}
+              hasEdited={editedSections.has("courses")}
             />
           </Section>
 
@@ -161,6 +169,7 @@ const App = () => {
             <ExperienceForm
               data={sections.experience.data}
               onSubmit={(data) => updateSectionData("experience", data)}
+              hasEdited={editedSections.has("experience")}
             />
           </Section>
 
@@ -168,6 +177,7 @@ const App = () => {
             <ProjectsForm
               data={sections.projects.data}
               onSubmit={(data) => updateSectionData("projects", data)}
+              hasEdited={editedSections.has("projects")}
             />
           </Section>
         </section>

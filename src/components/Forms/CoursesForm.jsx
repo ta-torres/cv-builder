@@ -1,18 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Edit2, Plus } from "lucide-react";
 import "./Forms.css";
 
-const CoursesForm = ({ data, onSubmit }) => {
-  const [formData, setFormData] = useState([
-    {
-      name: "",
-      provider: "",
-      year: "",
-      description: "",
-    },
-  ]);
-
+const CoursesForm = ({ data, onSubmit, hasEdited }) => {
+  const [formData, setFormData] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
+
+  useEffect(() => {
+    if (hasEdited) {
+      setFormData(data);
+    } else {
+      setFormData([
+        {
+          name: "",
+          provider: "",
+          year: "",
+          description: "",
+        },
+      ]);
+    }
+  }, [data, hasEdited]);
 
   const addCourse = () => {
     setFormData([

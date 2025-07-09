@@ -1,13 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Edit2 } from "lucide-react";
 import "./Forms.css";
 
-const SummaryForm = ({ data, onSubmit }) => {
-  const [formData, setFormData] = useState({
-    summary: "",
-  });
-
+const SummaryForm = ({ data, onSubmit, hasEdited }) => {
+  const [formData, setFormData] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
+
+  useEffect(() => {
+    if (hasEdited) {
+      setFormData(data);
+    } else {
+      setFormData({
+        summary: "",
+      });
+    }
+  }, [data, hasEdited]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
