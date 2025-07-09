@@ -79,6 +79,32 @@ const App = () => {
     }));
   };
 
+  const exportToJson = () => {
+    const jsonData = JSON.stringify(sections, null, 2);
+    const blob = new Blob([jsonData], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "cv-data.json";
+    link.click();
+
+    URL.revokeObjectURL(url);
+  };
+
+  const importFromJson = (file) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const jsonData = JSON.parse(e.target.result);
+        setSections(jsonData);
+      } catch (error) {
+        console.error("Error parsing JSON:", error);
+      }
+    };
+    reader.readAsText(file);
+  };
+
   return (
     <div className="container">
       <header className="header">
@@ -105,6 +131,15 @@ const App = () => {
           <Download size={20} />
           Download to PDF
         </button>
+        <button className="export-btn btn" onClick={exportToJson}>
+          <Download size={20} />
+          Export to JSON
+        </button>
+        <input
+          type="file"
+          accept=".json"
+          onChange={(e) => importFromJson(e.target.files[0])}
+        />
       </div>
 
       <main className="main-content">
