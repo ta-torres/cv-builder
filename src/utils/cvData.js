@@ -9,6 +9,7 @@ const cvData = {
     },
   },
   education: {
+    name: "Education",
     data: [
       {
         school: "school",
@@ -20,6 +21,7 @@ const cvData = {
     ],
   },
   experience: {
+    name: "Experience",
     data: [
       {
         company: "company",
@@ -36,12 +38,14 @@ const cvData = {
     ],
   },
   summary: {
+    name: "Summary",
     data: {
       summary:
         "A brief summary of your professional background, goals, and experience.",
     },
   },
   skills: {
+    name: "Skills",
     data: [
       { category: "Category 1", skills: "Skills" },
       { category: "Category 2", skills: "Skills" },
@@ -49,6 +53,7 @@ const cvData = {
     ],
   },
   projects: {
+    name: "Personal Projects",
     data: [
       {
         name: "Project name",
@@ -59,6 +64,7 @@ const cvData = {
     ],
   },
   courses: {
+    name: "Courses and Certifications",
     data: [
       {
         name: "Course name",

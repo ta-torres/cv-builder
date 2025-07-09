@@ -29,7 +29,9 @@ const CVDocument = ({ data }) => (
       <View style={styles.cv_body}>
         {/* Summary */}
         <View style={styles.cv_section}>
-          <Text style={styles.cv_section_title}>Summary</Text>
+          <Text style={styles.cv_section_title}>
+            {data.summary.name || "Summary"}
+          </Text>
           <View style={styles.summary_section}>
             <Text style={styles.summary_text}>{data.summary.data.summary}</Text>
           </View>
@@ -37,7 +39,9 @@ const CVDocument = ({ data }) => (
 
         {/* Skills */}
         <View style={styles.cv_section}>
-          <Text style={styles.cv_section_title}>Skills</Text>
+          <Text style={styles.cv_section_title}>
+            {data.skills.name || "Skills"}
+          </Text>
           <View style={styles.skills_section}>
             {data.skills.data.map((category, index) => (
               <View key={index} style={styles.skills_item}>
@@ -59,7 +63,9 @@ const CVDocument = ({ data }) => (
 
         {/* Education */}
         <View style={styles.cv_section}>
-          <Text style={styles.cv_section_title}>Education</Text>
+          <Text style={styles.cv_section_title}>
+            {data.education.name || "Education"}
+          </Text>
           <View style={styles.education_section}>
             {data.education.data.map((edu, index) => (
               <View key={index} style={styles.education_item}>
@@ -81,7 +87,7 @@ const CVDocument = ({ data }) => (
         {/* Courses and Certifications */}
         <View style={styles.cv_section}>
           <Text style={styles.cv_section_title}>
-            Courses and Certifications
+            {data.courses.name || "Courses and Certifications"}
           </Text>
           <View style={styles.education_section}>
             {data.courses.data.map((course, index) => (
@@ -113,7 +119,9 @@ const CVDocument = ({ data }) => (
 
         {/* Experience */}
         <View style={styles.cv_section}>
-          <Text style={styles.cv_section_title}>Experience</Text>
+          <Text style={styles.cv_section_title}>
+            {data.experience.name || "Experience"}
+          </Text>
           <View style={styles.experience_section}>
             {data.experience.data.map((exp, index) => (
               <View key={index} style={styles.experience_item}>
@@ -146,7 +154,9 @@ const CVDocument = ({ data }) => (
 
         {/* Personal Projects */}
         <View style={styles.cv_section}>
-          <Text style={styles.cv_section_title}>Personal Projects</Text>
+          <Text style={styles.cv_section_title}>
+            {data.projects.name || "Personal Projects"}
+          </Text>
           <View style={styles.experience_section}>
             {data.projects.data.map((project, index) => (
               <View key={index} style={styles.experience_item}>
