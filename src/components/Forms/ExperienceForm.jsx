@@ -40,6 +40,18 @@ const ExperienceForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
     setFormData(newData);
   };
 
+  const addResponsibility = (expIndex) => {
+    const newData = [...formData];
+    newData[expIndex].responsibilities.push("");
+    setFormData(newData);
+  };
+
+  const removeResponsibility = (expIndex, respIndex) => {
+    const newData = [...formData];
+    newData[expIndex].responsibilities.splice(respIndex, 1);
+    setFormData(newData);
+  };
+
   return isEditing ? (
     <form
       onSubmit={(e) => {
@@ -119,6 +131,25 @@ const ExperienceForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
                   }
                   placeholder="Describe your responsibility"
                 />
+                {respIndex === exp.responsibilities.length - 1 && (
+                  <button
+                    type="button"
+                    onClick={() => addResponsibility(index)}
+                    className="btn"
+                  >
+                    <Plus size={16} />
+                    Add
+                  </button>
+                )}
+                {respIndex > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => removeResponsibility(index, respIndex)}
+                    className="remove-btn"
+                  >
+                    Remove
+                  </button>
+                )}
               </div>
             ))}
           </div>
