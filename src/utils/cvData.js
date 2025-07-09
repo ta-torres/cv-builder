@@ -1,7 +1,5 @@
 const cvData = {
   generalInfo: {
-    isExpanded: true,
-    isEditing: false,
     data: {
       fullName: "name",
       jobTitle: "job title",
@@ -11,8 +9,6 @@ const cvData = {
     },
   },
   education: {
-    isExpanded: true,
-    isEditing: false,
     data: [
       {
         school: "school",
@@ -24,8 +20,6 @@ const cvData = {
     ],
   },
   experience: {
-    isExpanded: true,
-    isEditing: false,
     data: [
       {
         company: "company",
@@ -42,16 +36,12 @@ const cvData = {
     ],
   },
   summary: {
-    isExpanded: true,
-    isEditing: false,
     data: {
       summary:
         "A brief summary of your professional background, goals, and experience.",
     },
   },
   skills: {
-    isExpanded: true,
-    isEditing: false,
     data: [
       { category: "Category 1", skills: "Skills" },
       { category: "Category 2", skills: "Skills" },
@@ -59,8 +49,6 @@ const cvData = {
     ],
   },
   projects: {
-    isExpanded: true,
-    isEditing: false,
     data: [
       {
         name: "Project name",
@@ -71,8 +59,6 @@ const cvData = {
     ],
   },
   courses: {
-    isExpanded: true,
-    isEditing: false,
     data: [
       {
         name: "Course name",

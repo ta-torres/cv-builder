@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Edit2, Plus } from "lucide-react";
 import "./Forms.css";
 
-const CoursesForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
+const CoursesForm = ({ data, onSubmit }) => {
   const [formData, setFormData] = useState([
     {
       name: "",
@@ -11,6 +11,8 @@ const CoursesForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
       description: "",
     },
   ]);
+
+  const [isEditing, setIsEditing] = useState(false);
 
   const addCourse = () => {
     setFormData([
@@ -35,6 +37,7 @@ const CoursesForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
       onSubmit={(e) => {
         e.preventDefault();
         onSubmit(formData);
+        setIsEditing(false);
       }}
       className="form"
     >
@@ -85,7 +88,7 @@ const CoursesForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
           Add Course
         </button>
         <button type="submit">Save</button>
-        <button type="button" onClick={onToggleEdit}>
+        <button type="button" onClick={() => setIsEditing(false)}>
           Cancel
         </button>
       </div>
@@ -106,7 +109,7 @@ const CoursesForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
           </ul>
         </div>
       ))}
-      <button onClick={onToggleEdit} className="edit-btn">
+      <button onClick={() => setIsEditing(true)} className="edit-btn">
         <Edit2 size={20} />
         Edit
       </button>

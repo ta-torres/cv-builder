@@ -48,33 +48,11 @@ const App = () => {
     URL.revokeObjectURL(url);
   };
 
-  const toggleSection = (sectionName) => {
-    setSections((prev) => ({
-      ...prev,
-      [sectionName]: {
-        ...prev[sectionName],
-        isExpanded: !prev[sectionName].isExpanded,
-      },
-    }));
-  };
-
-  const toggleEdit = (sectionName) => {
-    setSections((prev) => ({
-      ...prev,
-      [sectionName]: {
-        ...prev[sectionName],
-        isEditing: !prev[sectionName].isEditing,
-      },
-    }));
-  };
-
   const updateSectionData = (sectionName, newData) => {
-    setSections((prev) => ({
-      ...prev,
+    setSections((prevData) => ({
+      ...prevData,
       [sectionName]: {
-        ...prev[sectionName],
         data: newData,
-        isEditing: false,
       },
     }));
   };
@@ -144,100 +122,51 @@ const App = () => {
 
       <main className="main-content">
         <section className="left-column">
-          <Section
-            title="General Information"
-            icon={<CircleUserRound />}
-            isExpanded={sections.generalInfo.isExpanded}
-            onToggle={() => toggleSection("generalInfo")}
-          >
+          <Section title="General Information" icon={<CircleUserRound />}>
             <GeneralForm
               data={sections.generalInfo.data}
-              isEditing={sections.generalInfo.isEditing}
-              onToggleEdit={() => toggleEdit("generalInfo")}
               onSubmit={(data) => updateSectionData("generalInfo", data)}
             />
           </Section>
 
-          <Section
-            title="Summary"
-            icon={<FileText />}
-            isExpanded={sections.summary.isExpanded}
-            onToggle={() => toggleSection("summary")}
-          >
+          <Section title="Summary" icon={<FileText />}>
             <SummaryForm
               data={sections.summary.data}
-              isEditing={sections.summary.isEditing}
-              onToggleEdit={() => toggleEdit("summary")}
               onSubmit={(data) => updateSectionData("summary", data)}
             />
           </Section>
 
-          <Section
-            title="Skills"
-            icon={<Lightbulb />}
-            isExpanded={sections.skills.isExpanded}
-            onToggle={() => toggleSection("skills")}
-          >
+          <Section title="Skills" icon={<Lightbulb />}>
             <SkillsForm
               data={sections.skills.data}
-              isEditing={sections.skills.isEditing}
-              onToggleEdit={() => toggleEdit("skills")}
               onSubmit={(data) => updateSectionData("skills", data)}
             />
           </Section>
 
-          <Section
-            title="Education"
-            icon={<GraduationCap />}
-            isExpanded={sections.education.isExpanded}
-            onToggle={() => toggleSection("education")}
-          >
+          <Section title="Education" icon={<GraduationCap />}>
             <EducationForm
               data={sections.education.data}
-              isEditing={sections.education.isEditing}
-              onToggleEdit={() => toggleEdit("education")}
               onSubmit={(data) => updateSectionData("education", data)}
             />
           </Section>
 
-          <Section
-            title="Courses and Certifications"
-            icon={<Scroll />}
-            isExpanded={sections.courses.isExpanded}
-            onToggle={() => toggleSection("courses")}
-          >
+          <Section title="Courses and Certifications" icon={<Scroll />}>
             <CoursesForm
               data={sections.courses.data}
-              isEditing={sections.courses.isEditing}
-              onToggleEdit={() => toggleEdit("courses")}
               onSubmit={(data) => updateSectionData("courses", data)}
             />
           </Section>
 
-          <Section
-            title="Experience"
-            icon={<BriefcaseBusiness />}
-            isExpanded={sections.experience.isExpanded}
-            onToggle={() => toggleSection("experience")}
-          >
+          <Section title="Experience" icon={<BriefcaseBusiness />}>
             <ExperienceForm
               data={sections.experience.data}
-              isEditing={sections.experience.isEditing}
-              onToggleEdit={() => toggleEdit("experience")}
               onSubmit={(data) => updateSectionData("experience", data)}
             />
           </Section>
 
-          <Section
-            title="Personal Projects"
-            icon={<FolderGit2 />}
-            isExpanded={sections.projects.isExpanded}
-            onToggle={() => toggleSection("projects")}
-          >
+          <Section title="Personal Projects" icon={<FolderGit2 />}>
             <ProjectsForm
               data={sections.projects.data}
-              isEditing={sections.projects.isEditing}
-              onToggleEdit={() => toggleEdit("projects")}
               onSubmit={(data) => updateSectionData("projects", data)}
             />
           </Section>

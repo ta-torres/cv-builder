@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Edit2, Plus } from "lucide-react";
 import "./Forms.css";
 
-const ExperienceForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
+const ExperienceForm = ({ data, onSubmit }) => {
   const [formData, setFormData] = useState([
     {
       company: "",
@@ -13,6 +13,8 @@ const ExperienceForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
       location: "",
     },
   ]);
+
+  const [isEditing, setIsEditing] = useState(false);
 
   const addExperience = () => {
     setFormData([
@@ -57,6 +59,7 @@ const ExperienceForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
       onSubmit={(e) => {
         e.preventDefault();
         onSubmit(formData);
+        setIsEditing(false);
       }}
       className="form"
     >
@@ -161,7 +164,7 @@ const ExperienceForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
           Add Experience
         </button>
         <button type="submit">Save</button>
-        <button type="button" onClick={onToggleEdit}>
+        <button type="button" onClick={() => setIsEditing(false)}>
           Cancel
         </button>
       </div>
@@ -189,7 +192,7 @@ const ExperienceForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
           </ul>
         </div>
       ))}
-      <button onClick={onToggleEdit} className="edit-btn">
+      <button onClick={() => setIsEditing(true)} className="edit-btn">
         <Edit2 size={20} />
         Edit
       </button>

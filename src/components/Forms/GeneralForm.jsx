@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Edit2 } from "lucide-react";
 import "./Forms.css";
 
-const GeneralForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
+const GeneralForm = ({ data, onSubmit }) => {
   const [formData, setFormData] = useState({
     fullName: "",
     jobTitle: "",
@@ -11,9 +11,12 @@ const GeneralForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
     webpage: "",
   });
 
+  const [isEditing, setIsEditing] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(formData);
+    setIsEditing(false);
   };
 
   return isEditing ? (
@@ -71,7 +74,7 @@ const GeneralForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
       </div>
       <div className="form-buttons">
         <button type="submit">Save</button>
-        <button type="button" onClick={onToggleEdit}>
+        <button type="button" onClick={() => setIsEditing(false)}>
           Cancel
         </button>
       </div>
@@ -89,7 +92,7 @@ const GeneralForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
           </a>
         </p>
       </div>
-      <button onClick={onToggleEdit} className="edit-btn">
+      <button onClick={() => setIsEditing(true)} className="edit-btn">
         <Edit2 size={20} />
         Edit
       </button>

@@ -2,13 +2,15 @@ import { useState } from "react";
 import { Edit2, Plus } from "lucide-react";
 import "./Forms.css";
 
-const SkillsForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
+const SkillsForm = ({ data, onSubmit }) => {
   const [formData, setFormData] = useState([
     {
       category: "",
       skills: "",
     },
   ]);
+
+  const [isEditing, setIsEditing] = useState(false);
 
   const addSkillCategory = () => {
     setFormData([
@@ -37,6 +39,7 @@ const SkillsForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
       onSubmit={(e) => {
         e.preventDefault();
         onSubmit(formData);
+        setIsEditing(false);
       }}
       className="form"
     >
@@ -69,7 +72,7 @@ const SkillsForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
           Add Skill Category
         </button>
         <button type="submit">Save</button>
-        <button type="button" onClick={onToggleEdit}>
+        <button type="button" onClick={() => setIsEditing(false)}>
           Cancel
         </button>
       </div>
@@ -84,7 +87,7 @@ const SkillsForm = ({ data, isEditing, onToggleEdit, onSubmit }) => {
           </ul>
         </div>
       ))}
-      <button onClick={onToggleEdit} className="edit-btn">
+      <button onClick={() => setIsEditing(true)} className="edit-btn">
         <Edit2 size={20} />
         Edit
       </button>
