@@ -60,7 +60,19 @@ const App = () => {
   };
 
   const exportToJson = () => {
-    const jsonData = JSON.stringify(sections, null, 2);
+    const generalInfoWithoutPhoto = {
+      ...(sections?.generalInfo?.data || {}),
+    };
+    delete generalInfoWithoutPhoto.photo;
+    const exportableSections = {
+      ...sections,
+      generalInfo: {
+        ...sections.generalInfo,
+        data: generalInfoWithoutPhoto,
+      },
+    };
+
+    const jsonData = JSON.stringify(exportableSections, null, 2);
     const blob = new Blob([jsonData], { type: "application/json" });
     const url = URL.createObjectURL(blob);
 
@@ -77,8 +89,20 @@ const App = () => {
     reader.onload = (e) => {
       try {
         const jsonData = JSON.parse(e.target.result);
-        setSections(jsonData);
-        setEditedSections(new Set(Object.keys(jsonData))); //
+        const generalInfoWithoutPhoto = {
+          ...(jsonData?.generalInfo?.data || {}),
+        };
+        delete generalInfoWithoutPhoto.photo;
+        const sanitizedData = {
+          ...jsonData,
+          generalInfo: {
+            ...jsonData.generalInfo,
+            data: generalInfoWithoutPhoto,
+          },
+        };
+
+        setSections(sanitizedData);
+        setEditedSections(new Set(Object.keys(sanitizedData))); //
       } catch (error) {
         console.error("Error parsing JSON:", error);
       }

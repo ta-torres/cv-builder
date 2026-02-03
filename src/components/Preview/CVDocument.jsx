@@ -3,6 +3,7 @@ import {
   Page,
   Text,
   View,
+  Image,
   StyleSheet,
   Font,
 } from "@react-pdf/renderer";
@@ -17,12 +18,26 @@ const CVDocument = ({ data }) => (
     <Page size="A4" style={styles.cv_preview}>
       {/* Header */}
       <View style={styles.cv_header}>
-        <Text style={styles.name}>{data.generalInfo.data.fullName}</Text>
-        <Text style={styles.jobTitle}>{data.generalInfo.data.jobTitle}</Text>
+        <View style={styles.profile_photo_wrapper}>
+          {data.generalInfo.data.photo ? (
+            <Image
+              style={styles.profile_photo}
+              src={data.generalInfo.data.photo}
+            />
+          ) : null}
+        </View>
+
+        <View style={styles.header_main}>
+          <Text style={styles.name}>{data.generalInfo.data.fullName}</Text>
+          <Text style={styles.jobTitle}>{data.generalInfo.data.jobTitle}</Text>
+        </View>
+
         <View style={styles.contact_info}>
-          <Text>{data.generalInfo.data.email}</Text>
-          <Text>{data.generalInfo.data.phone}</Text>
-          <Text>{data.generalInfo.data.webpage}</Text>
+          <Text style={styles.contact_line}>{data.generalInfo.data.email}</Text>
+          <Text style={styles.contact_line}>{data.generalInfo.data.phone}</Text>
+          <Text style={styles.contact_line}>
+            {data.generalInfo.data.webpage}
+          </Text>
         </View>
       </View>
 
@@ -206,10 +221,30 @@ const styles = StyleSheet.create({
   },
   cv_header: {
     display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: "12px",
+  },
+  profile_photo_wrapper: {
+    width: "80px",
+    height: "80px",
+    borderRadius: "500px",
+    overflow: "hidden",
+    backgroundColor: "#e5e7eb",
+    flexShrink: 0,
+  },
+  profile_photo: {
+    width: "80px",
+    height: "80px",
+    objectFit: "cover",
+  },
+  header_main: {
+    display: "flex",
     flexDirection: "column",
-    textAlign: "center",
-    paddingBottom: "16px",
-    borderBottom: "2px solid #333",
+    flexGrow: 1,
+    flexShrink: 1,
+    textAlign: "left",
   },
   name: {
     fontSize: "20px",
@@ -220,19 +255,21 @@ const styles = StyleSheet.create({
   },
   contact_info: {
     display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    gap: "12px",
-    fontSize: "14px",
-    alignItems: "baseline",
+    flexDirection: "column",
+    fontSize: "12px",
+    alignItems: "flex-start",
+    textAlign: "left",
+    flexShrink: 0,
+  },
+  contact_line: {
+    // lineHeight: "1.1",
   },
   cv_body: {
-    paddingTop: "16px",
+    paddingTop: "8px",
   },
   cv_section: {
     display: "flex",
     flexDirection: "column",
-    paddingBottom: "9px",
   },
   cv_section_title: {
     color: "#2563eb",
@@ -241,11 +278,13 @@ const styles = StyleSheet.create({
     fontSize: "16px",
   },
   summary_section: {
-    paddingTop: "4px",
+    paddingTop: "2px",
   },
-  summary_text: {},
+  summary_text: {
+    paddingBottom: "2px",
+  },
   skills_section: {
-    paddingTop: "4px",
+    paddingTop: "2px",
   },
   skills_item: {
     display: "flex",
@@ -253,8 +292,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
   skill_category_container: {
-    // width: "80px",
-    minWidth: "80px", //change later
+    minWidth: "80px",
   },
   skill_category: {
     fontWeight: "bold",
@@ -262,19 +300,17 @@ const styles = StyleSheet.create({
   skills_list: {
     display: "flex",
     flexDirection: "row",
-    // gap: "6px",
     paddingLeft: "8px",
     lineHeight: "0.8",
     flex: "1",
     flexWrap: "wrap",
     alignItems: "flex-start",
-    // paddingBottom: "8px",
   },
   education_section: {
-    paddingTop: "4px",
+    paddingTop: "2px",
   },
   education_item: {
-    paddingBottom: "4px",
+    // paddingBottom: "2px",
   },
   education_header: {
     display: "flex",
@@ -296,10 +332,10 @@ const styles = StyleSheet.create({
   },
   dates: {},
   experience_section: {
-    paddingTop: "4px",
+    paddingTop: "2px",
   },
   experience_item: {
-    paddingBottom: "4px",
+    paddingBottom: "2px",
   },
   experience_header: {
     display: "flex",
@@ -334,9 +370,6 @@ const styles = StyleSheet.create({
   list_text: {
     lineHeight: "0.8",
     whiteSpace: "nowrap",
-    // fontSize: "12px",
-    // marginBottom: "0",
-    // paddingBottom: "2px",
   },
   project_link: {
     color: "#2563eb",
@@ -347,7 +380,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "baseline",
-    paddingBottom: "2px",
+    // paddingBottom: "2px",
   },
   course_title: {
     display: "flex",

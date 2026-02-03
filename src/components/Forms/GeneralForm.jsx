@@ -15,10 +15,24 @@ const GeneralForm = ({ data, onSubmit, hasEdited }) => {
         jobTitle: "",
         email: "",
         phone: "",
-        location: "",
+        webpage: "",
+        photo: "",
       });
     }
   }, [data, hasEdited]);
+
+  const handlePhotoChange = (file) => {
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setFormData((prev) => ({
+        ...prev,
+        photo: reader.result,
+      }));
+    };
+    reader.readAsDataURL(file);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -77,6 +91,14 @@ const GeneralForm = ({ data, onSubmit, hasEdited }) => {
             setFormData({ ...formData, webpage: e.target.value })
           }
           placeholder="https://example.com"
+        />
+      </div>
+      <div className="form-group">
+        <label>Profile Photo</label>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => handlePhotoChange(e.target.files?.[0])}
         />
       </div>
       <div className="form-buttons">
