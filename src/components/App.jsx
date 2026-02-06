@@ -15,7 +15,7 @@ import CVDocument from "./Preview/CVDocument";
 import CoverLetterDocument from "./Preview/CoverLetterDocument";
 import PDFPreview from "./Preview/PDFPreview";
 import CoverLetterPDFPreview from "./Preview/CoverLetterPDFPreview";
-import MYDATA from "../utils/cv-data.json";
+import cvData from "../utils/cvData.js";
 import coverLetterData from "../utils/coverLetterData.js";
 import {
   Download,
@@ -33,7 +33,7 @@ import "./App.css";
 
 const App = () => {
   const [activeBuilder, setActiveBuilder] = useState("cv");
-  const [sections, setSections] = useState(MYDATA);
+  const [sections, setSections] = useState(cvData);
   const [editedSections, setEditedSections] = useState(new Set());
   const [coverLetterSections, setCoverLetterSections] =
     useState(coverLetterData);
